@@ -1,7 +1,7 @@
 # ArduinoSnake
 A basic Arduino Snake game using an 8x8 LED Matrix display and a single shift register.
 
-## Ver 0 - Initial Design
+## Initial Display Design and Implementation
 ### Overview
 - Initial design makes use of a single 8-bit shift-register and reloading the full shift register byte for each column. 
 - 8 digital pins control the rows.
