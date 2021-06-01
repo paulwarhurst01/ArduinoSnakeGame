@@ -13,3 +13,10 @@ A basic Arduino Snake game using an 8x8 LED Matrix display and a single shift re
 - Switching the two would increase speed and possibly prevent the visible light spill.
 
 N.B. The system would benefit from a second shift register cutting down on pins
+
+### Observations after Switching
+- Resolution is much sharper, no longer get "light spill" from LED's turning on out of sync.
+- Noticeable refresh from left to right as bits are written to shift register
+    -   Possible Solution: Shift register manually rather than loading full byte each time
+    -   This resulted in noticeable improvement but still noticeable, unpleasant refresh flicker
+    -   Need to switch to other hardware implementation.

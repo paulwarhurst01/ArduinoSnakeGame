@@ -1,13 +1,13 @@
 #include <Arduino.h>
 
-const int latchPin = 12;
-const int clockPin = 11;
+const int latchPin = 11;
+const int clockPin = 12;
 const int dataPin = 10;
 
 
 // Col is active Low
 // Row is active High
-const int rowPinArray[] = {2, 3, 4, 5, 6, 7, 8, 9};
+const int rowPinArray[8] = {2, 3, 4, 5, 6, 7, 8, 9};
 
 /*int initial_display_array[8][8] = {
     {1, 1, 1, 1, 1, 1, 1, 1},
@@ -18,17 +18,27 @@ const int rowPinArray[] = {2, 3, 4, 5, 6, 7, 8, 9};
     {1, 0, 0, 0, 0, 1, 1, 1},
     {1, 1, 0, 0, 1, 1, 1, 1},
     {1, 1, 1, 1, 1, 1, 1, 1}
+
+    {0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0},
+    {0, 0, 0, 0, 0, 0, 0, 0},
+
   };*/
 
 int initial_display_array[8][8] = {
-    {1, 1, 1, 1, 1, 0, 0, 1},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 1, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {1, 0, 0, 0, 0, 1, 1, 1},
-    {1, 1, 0, 0, 1, 1, 1, 1},
-    {1, 1, 1, 1, 1, 1, 1, 1}
+    {0, 1, 0, 1, 0, 1, 0, 1},
+    {1, 0, 1, 0, 1, 0, 1, 0},
+    {0, 1, 0, 1, 0, 1, 0, 1},
+    {1, 0, 1, 0, 1, 0, 1, 0},
+    {0, 1, 0, 1, 0, 1, 0, 1},
+    {1, 0, 1, 0, 1, 0, 1, 0},
+    {0, 1, 0, 1, 0, 1, 0, 1},
+    {1, 0, 1, 0, 1, 0, 1, 0},
   };
 
 void setup() {
@@ -44,7 +54,7 @@ void setup() {
 
     // Reset shift register
     digitalWrite(latchPin, LOW);
-    shiftOut(dataPin, clockPin, MSBFIRST, 0xFF);
+    shiftOut(dataPin, clockPin, MSBFIRST, 0xff);
     digitalWrite(latchPin, HIGH);
 
     Serial.begin(9600);
@@ -60,30 +70,39 @@ void setup() {
 }
 
 void loop() {
-    for(int i = 0; i < 8; i++){
-        digitalWrite(rowPinArray[i], HIGH);
-        for(int j = 0; j < 8; j++){
-            byte bits_to_send = 0xff;
-            if(initial_display_array[i][j] == 1){
-                bitWrite(bits_to_send, j, LOW);
-                digitalWrite(latchPin, LOW);
-                shiftOut(dataPin, clockPin, MSBFIRST, bits_to_send);
-                digitalWrite(latchPin, HIGH);
-                delayMicroseconds(50);
-            }
-        }
-        digitalWrite(rowPinArray[i], LOW);
-    }
+    digitalWrite(dataPin, LOW);
+    digitalWrite(latchPin, LOW);
+    digitalWrite(clockPin, HIGH);
+    digitalWrite(clockPin, LOW);
+    digitalWrite(latchPin, HIGH);
 
-    /*for(int i = 0; i < 8; i++){
-        for(int j = 0; j < 8; j++){
-            if(intialDisplayArray[i][j]){
+    for(int j = 0; j < 8; j++){
+
+        //digitalWrite(clockPin, HIGH);
+        //digitalWrite(clockPin, LOW);
+
+        //byte bits_to_send = 0xff;
+        //bitWrite(bits_to_send, j, LOW);
+
+        //digitalWrite(latchPin, LOW);
+        //shiftOut(dataPin, clockPin, MSBFIRST, bits_to_send);
+        //digitalWrite(latchPin, HIGH);
+
+        for(int i = 0; i < 8; i++){
+            if(initial_display_array[i][j]){
+                Serial.print(i);
+                Serial.print("\t");
+                Serial.print(j);
+                Serial.print("\n");
                 digitalWrite(rowPinArray[i], HIGH);
-                digitalWrite(snakeColPinArray[j], LOW);
-                delayMicroseconds(100);
+                delayMicroseconds(1000);
                 digitalWrite(rowPinArray[i], LOW);
-                digitalWrite(snakeColPinArray[j], HIGH);
             }
         }
-    }*/
+        digitalWrite(dataPin, HIGH);
+        digitalWrite(latchPin, LOW);
+        digitalWrite(clockPin, HIGH);
+        digitalWrite(clockPin, LOW);
+        digitalWrite(latchPin, HIGH);
+    }
 }
