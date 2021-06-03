@@ -10,11 +10,11 @@
             "includePath": [
                 "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/include",
                 "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/src",
+                "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                 ""
@@ -24,11 +24,11 @@
                 "path": [
                     "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/include",
                     "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/src",
+                    "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/HID/src",
-                    "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     ""
