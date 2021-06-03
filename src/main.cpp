@@ -8,36 +8,6 @@ const int latchPin = 10;
 // Row is active High
 const int rowPinArray[8] = {2, 3, 4, 5, 6, 7, 8, 9};
 
-/*int initial_display_array[8][8] = {
-    {1, 1, 1, 1, 1, 1, 1, 1},
-    {1, 1, 1, 0, 0, 0, 0, 0},
-    {1, 1, 0, 0, 0, 0, 0, 0},
-    {1, 1, 1, 1, 1, 1, 1, 1},
-    {0, 0, 0, 0, 0, 0, 1, 1},
-    {1, 0, 0, 0, 0, 1, 1, 1},
-    {1, 1, 0, 0, 1, 1, 1, 1},
-    {1, 1, 1, 1, 1, 1, 1, 1}
-
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-    {0, 0, 0, 0, 0, 0, 0, 0},
-
-    {0, 1, 0, 1, 0, 1, 0, 1},
-    {1, 0, 1, 0, 1, 0, 1, 0},
-    {0, 1, 0, 1, 0, 1, 0, 1},
-    {1, 0, 1, 0, 1, 0, 1, 0},
-    {0, 1, 0, 1, 0, 1, 0, 1},
-    {1, 0, 1, 0, 1, 0, 1, 0},
-    {0, 1, 0, 1, 0, 1, 0, 1},
-    {1, 0, 1, 0, 1, 0, 1, 0},
-
-  };*/
-
 int display_array[8][8] = {
     {1, 1, 1, 1, 1, 1, 1, 1},
     {1, 1, 1, 0, 0, 0, 1, 1},
@@ -70,27 +40,29 @@ int display_array[8][8] = {
   };
 
 void setup() {
-    //set pins to output because they are addressed in the main loop
+    //set pins to output
     pinMode(latchPin, OUTPUT);
+
+    // Begin SPI protocol and set to 20 MHz, max shift reg freq is 25 MHz
     SPI.begin();
     SPI.beginTransaction(SPISettings(20000000, MSBFIRST, SPI_MODE0));
-    //pinMode(dataPin, OUTPUT);
-    //pinMode(clockPin, OUTPUT);
 
+    // Set all LEDs off intially starting with setting row pins low
     for(int i = 0; i < 8; i++){
         pinMode(rowPinArray[i], OUTPUT);
         digitalWrite(rowPinArray[i], LOW);
     }
 
-    // Reset shift register
+    // Reset shift register to all LEDs off - Active low so set high.
     digitalWrite(latchPin, LOW);
-    //shiftOut(dataPin, clockPin, MSBFIRST, 0xff);
     SPI.transfer(0xff);
     digitalWrite(latchPin, HIGH);
 
+    // Serial output for debugging
     Serial.begin(9600);
     Serial.println("reset");
 
+    // Display array - move to header file as function
     for(int i = 0; i < 8; i++){
         for(int j = 0; j < 8; j++){
             Serial.print(display_array[i][j]);
@@ -101,16 +73,19 @@ void setup() {
 }
 
 void loop() {
-
-   for(int j = 0; j < 8; j++){
-
+    // MOve this method to display header file as function
+    // Loop through 2D display array updating hardware LED matrix
+    for(int j = 0; j < 8; j++){
+        // Set current column being refreshed LOW and rest HIGH
         byte bits_to_send = 0xff;
         bitWrite(bits_to_send, j, LOW);
 
+        // Send byte through SPI to shift-reg
         digitalWrite(latchPin, LOW);
         SPI.transfer(bits_to_send);
         digitalWrite(latchPin, HIGH);
 
+        // Reflect display array by setting LEDs in that column active HIGH 
         for(int i = 0; i < 8; i++){
             if(display_array[i][j]){
                 digitalWrite(rowPinArray[i], HIGH);
@@ -119,12 +94,11 @@ void loop() {
         // Delay to allow LEDs to illimuniate
         delayMicroseconds(2000);
 
-        // Turn all pins Low
+        // Turn all pins that were active HIGH, LOW
         for(int i = 0; i < 8; i++){
             if(display_array[i][j]){
                 digitalWrite(rowPinArray[i], LOW);
             }
         }
-
     }
 }
