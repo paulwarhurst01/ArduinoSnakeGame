@@ -32,6 +32,7 @@ int display_array[8][8] = {
     {1, 0, 1, 0, 1, 0, 1, 0},*/
   };
 
+// Instantiate Matrix Display array
 int rowPinArray[8] = {2, 3, 4, 5, 6, 7, 8, 9};
 MatrixDisplay matrixDisp(rowPinArray, 10);
 

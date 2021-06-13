@@ -2,24 +2,29 @@
 #include <classMatrixDisplay.h>
 
 MatrixDisplay::MatrixDisplay(int row_pins[8], int latchPin){
+    // latch pin for shift register
     _latch_pin = latchPin;
     pinMode(latchPin, OUTPUT);
+    // set row pins as outputs
     for(int i = 0; i < 8; i++){
         _row_pins[i] = row_pins[i];
         pinMode(_row_pins[i], OUTPUT);
         // Set all LEDs off intially starting with setting row pins low
         digitalWrite(_row_pins[i], LOW);
     }
+    // Create SPI instance transferring at 2 MHz
     SPI.begin();
     SPI.beginTransaction(SPISettings(20000000, MSBFIRST, SPI_MODE0));
 
     // Reset shift register to all LEDs off - Active low so set high.
+    // Toggle latch pin to output on Shift reg
     digitalWrite(latchPin, LOW);
     SPI.transfer(0xff);
     digitalWrite(latchPin, HIGH);
 }
 
 void MatrixDisplay::updateDisplay(int displayArray[8][8]){
+    // Copies array into MatrixDisplay class
     for(int i = 0; i < 8; i++){
         for(int j = 0; j < 8; j++){
             _display_array[i][j] = displayArray[i][j];
@@ -28,6 +33,7 @@ void MatrixDisplay::updateDisplay(int displayArray[8][8]){
 }
 
 void MatrixDisplay::refreshDisplay(){
+    // Refreshes the display
     // Loop through 2D display array updating hardware LED matrix
     for(int j = 0; j < 8; j++){
         // Set current column being refreshed LOW and rest HIGH
@@ -56,4 +62,3 @@ void MatrixDisplay::refreshDisplay(){
         }
     }
 }
-    
