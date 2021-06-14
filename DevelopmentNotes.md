@@ -19,6 +19,9 @@
     - However, should not be an issue as size of each snake segment is consistent - freed segment 
         can immediately be used for next one.
 - Linked list iteration begins at tail - Both head and tail have to move, check bends as you go
+- Eaten food locations are stored in a secondary, first in = first out, list
+    - This list uses the same SnakeNode struct as the Snake bend list
+        -> This means all malloc() are the same size and avoids fragmentation even though food has no direction
 
 ## Initial Display Design and Implementation
 ### Overview
