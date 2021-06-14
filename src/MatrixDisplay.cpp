@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <classMatrixDisplay.h>
+#include <SnakeNode.h>
 
 MatrixDisplay::MatrixDisplay(int row_pins[8], int latchPin){
     // latch pin for shift register
@@ -23,7 +24,7 @@ MatrixDisplay::MatrixDisplay(int row_pins[8], int latchPin){
     digitalWrite(latchPin, HIGH);
 }
 
-void MatrixDisplay::updateDisplay(int displayArray[8][8]){
+void MatrixDisplay::updateDisplayArray(int displayArray[8][8]){
     // Copies array into MatrixDisplay class
     for(int i = 0; i < 8; i++){
         for(int j = 0; j < 8; j++){

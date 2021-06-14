@@ -16,6 +16,8 @@
 - Bends remain static until: [coords of the tail] == [coords of bend], bend is removed from linked list
 - This could possibly lead to fragmentation of menu given sufficient bends - should this be an issue,
     one large chunk of memory will be initially set aside
+    - However, should not be an issue as size of each snake segment is consistent - freed segment 
+        can immediately be used for next one.
 - Linked list iteration begins at tail - Both head and tail have to move, check bends as you go
 
 ## Initial Display Design and Implementation
