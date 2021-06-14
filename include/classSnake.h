@@ -11,11 +11,11 @@ class Snake
         void moveSnake();
         void changeDirection();
         void updateDisplay();
-        SnakeNode **tail;
+        struct SnakeNode *tail;
         int snake_length;
     private:
-        SnakeNode **createNode(int node_type, int x, int y, int direction);
-        void insertBend(SnakeNode **tail)
+        SnakeNode* createNode(int node_type, int x, int y, int direction);
+        void insertBend(int x, int y, int direction);
         void removeNode();
 
 };
