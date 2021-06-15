@@ -63,3 +63,11 @@ void MatrixDisplay::refreshDisplay(){
         }
     }
 }
+
+void MatrixDisplay::updateDisplayList(SnakeNode* tail){
+    SnakeNode *temp = tail->next;
+    do
+    {
+        
+    } while (temp->next != NULL);
+}
