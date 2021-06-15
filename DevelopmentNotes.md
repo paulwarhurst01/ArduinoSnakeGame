@@ -1,7 +1,14 @@
-## ToDo
-- Test cases for queues
+# Development Notes
 
-## Snake Game Design and Implementaion
+- These rough notes document the design process and implementation of the game providing reasoning for design decisions made throughout the design process.
+- The reasoning for many of the design decisions 
+- Most recent additions are at the top with older development toward the bottom
+
+## Still ToDo
+- Test cases for queues
+- Complete
+
+# Snake Game Design and Implementaion
 ### Initial
 - Initial design contains its own array that gets copied into the display array
     - This design is inefficient, future iterations will look into using the same array or only
@@ -26,12 +33,12 @@
     - This list uses the same SnakeNode struct as the Snake bend list
         -> This means all malloc() are the same size and avoids fragmentation even though food has no direction
 
-## Initial Display Design and Implementation
-### Overview
+# Initial Display Design and Implementation
+## Overview
 - Initial design makes use of a single 8-bit shift-register and reloading the full shift register byte for each column. 
 - 8 digital pins control the rows - these are set active high for the related shift-reg byte.
 
-### Observations
+## Observations
 - Visible light-spill due to slow switching
 
 - This initial configuration should be reversed - currently the digital pin corresponding to the row changes once for every 8-reloads of the shift register whihc is loaded serially.
@@ -39,7 +46,7 @@
 
 N.B. The system would benefit from a second shift register cutting down on pins
 
-### Observations after Switching
+## Observations after Switching
 - Resolution is much sharper, no longer get "light spill" from LED's turning on out of sync.
 - Noticeable refresh from left to right as bits are written to shift register
     -   Possible Solution: Shift register manually rather than loading full byte each time
@@ -57,7 +64,7 @@ N.B. The system would benefit from a second shift register cutting down on pins
 - Shift reg Max clock speed - 25 MHz - Use 20 MHz for Arduino
 - Using default SPI mode
 
-# Solution - Obviously
-- Turn on everything in column
+## Solution - Obviously
+- Turn on everything in column - i.e. refresh column by column rather than LED by LED
     - Implementation greatly increased the refresh rate.
     - Final Implementation used.

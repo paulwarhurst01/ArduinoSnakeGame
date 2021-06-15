@@ -17,6 +17,7 @@
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "C:/Users/warhu/.platformio/packages/tool-unity",
                 ""
             ],
             "browse": {
@@ -31,6 +32,7 @@
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "C:/Users/warhu/.platformio/packages/tool-unity",
                     ""
                 ]
             },

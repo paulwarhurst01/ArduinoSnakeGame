@@ -10,19 +10,19 @@
 
 #include <Arduino.h>
 #include <SPI.h>
-#include <SnakeNode.h>
+#include <structSnakeNode.h>
 
 class MatrixDisplay
 {
     public:
-        MatrixDisplay(int row_pins[8], int latchPin);
-        void updateDisplayArray(int displayArray[8][8]);
-        void updateDisplayList(SnakeNode *tail);
-        void refreshDisplay();
+        MatrixDisplay(int row_pins[8], int latchPin);       // Class constructor
+        void updateDisplayArray(int displayArray[8][8]);    // Updates array by copying in another complete array
+        void updateDisplayList(SnakeNode *tail);            // Updates array using a list passed
+        void refreshDisplay();                              // Refreshs display column by column
     private:
-        int _latch_pin;
-        int _row_pins[8];
-        int _display_array[8][8];
+        int _latch_pin;                                     // Latch pin for shift reg
+        int _row_pins[8];                                   // 8 pins for rows
+        int _display_array[8][8];                           // internal display array that represents LED matrix
 };
 
 #endif

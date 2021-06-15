@@ -8,12 +8,11 @@
 
 typedef struct SnakeNode
 {
-    /* data */
     int node_type;      // 0 = tail, 1 = head, 2 = bend
     int x;              // x coord of entity
     int y;              // y coord of entity
     int direction;      // 1 - Up, 2 - Left, 3 - Down, 4 - Right
-    SnakeNode *next;    // 
+    SnakeNode *next;    // Pointer to the next node in the list
 
 } SnakeNode;
 

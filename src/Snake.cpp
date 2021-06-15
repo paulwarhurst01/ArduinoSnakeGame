@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <classSnake.h>
-#include <SnakeNode.h>
+#include <structSnakeNode.h>
 
 Snake::Snake()
 {

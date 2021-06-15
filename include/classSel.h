@@ -2,7 +2,7 @@
 #ifndef Sel_h
 #define Sel_h
 
-#include <SnakeNode.h>
+#include <structSnakeNode.h>
 
 class Sel
 {

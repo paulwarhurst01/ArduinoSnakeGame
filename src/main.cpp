@@ -2,6 +2,7 @@
 #include <classMatrixDisplay.h>
 
 int display_array[8][8] = {
+    // Initial S display array
     {1, 1, 1, 1, 1, 1, 1, 1},
     {1, 1, 1, 0, 0, 0, 1, 1},
     {1, 1, 0, 0, 0, 0, 0, 0},
@@ -37,9 +38,10 @@ int rowPinArray[8] = {2, 3, 4, 5, 6, 7, 8, 9};
 MatrixDisplay matrixDisp(rowPinArray, 10);
 
 void setup() {
+  // Copy in inital S array
+  matrixDisp.updateDisplayArray(display_array);
 }
 
 void loop() {
-    matrixDisp.updateDisplay(display_array);
-    matrixDisp.refreshDisplay();
+    matrixDisp.refreshDisplay();                    // Constantly refresh display array
 }
