@@ -10,7 +10,8 @@
 
 #include <Arduino.h>
 #include <SPI.h>
-#include <structSnakeNode.h>
+
+#include "structSnakeNode.h"
 
 class MatrixDisplay
 {

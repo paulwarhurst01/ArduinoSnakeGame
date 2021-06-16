@@ -1,6 +1,7 @@
 #include <Arduino.h>
-#include <classMatrixDisplay.h>
-#include <structSnakeNode.h>
+
+#include "classMatrixDisplay.h"
+#include "structSnakeNode.h"
 
 MatrixDisplay::MatrixDisplay(uint8_t row_pins[8], uint8_t latchPin){
     // latch pin for shift register
