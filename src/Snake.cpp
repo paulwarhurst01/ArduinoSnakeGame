@@ -10,10 +10,10 @@ Snake::Snake()
     struct SnakeNode *food;
     // Initially tail points directly to head, no body pieces in between
     tail->next = createNode(1, 4, 4, 0);
-    int length = 3;
+    uint8_t length = 3;
 };
 
-SnakeNode* Snake::createNode(int node_type, int x, int y, int direction)
+SnakeNode* Snake::createNode(uint8_t node_type, uint8_t x, uint8_t y, uint8_t direction)
 {
     struct SnakeNode* snake_node = (struct SnakeNode*) malloc(sizeof(SnakeNode));
     // Create if malloc successful
@@ -26,7 +26,7 @@ SnakeNode* Snake::createNode(int node_type, int x, int y, int direction)
     }
 };
 
-void Snake::insertBend(int x, int y, int direction){
+void Snake::insertBend(uint8_t x, uint8_t y, uint8_t direction){
     // Preserve address of head
     SnakeNode *head = tail->next;
     // Add bend
@@ -35,7 +35,7 @@ void Snake::insertBend(int x, int y, int direction){
     tail->next->next = head;
 }
 
-void Snake::enqueue_food(int x, int y)
+void Snake::enqueue_food(uint8_t x, uint8_t y)
 {
     if(food == NULL){
         // If no food items exist, create one

@@ -13,12 +13,12 @@ class Snake
         void updateDisplay();
         struct SnakeNode *tail;
         struct SnakeNode *food;
-        int snake_length;
+        uint8_t snake_length;
     private:
-        SnakeNode* createNode(int node_type, int x, int y, int direction);
-        void insertBend(int x, int y, int direction);
+        SnakeNode* createNode(uint8_t node_type, uint8_t x, uint8_t y, uint8_t direction);
+        void insertBend(uint8_t x, uint8_t y, uint8_t direction);
         void removeNode();
-        void enqueue_food(int x, int y);
+        void enqueue_food(uint8_t x, uint8_t y);
         void dequeue_food();
 
 };

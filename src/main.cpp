@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <classMatrixDisplay.h>
 
-int display_array[8][8] = {
+uint8_t display_array[8][8] = {
     // Initial S display array
     {1, 1, 1, 1, 1, 1, 1, 1},
     {1, 1, 1, 0, 0, 0, 1, 1},
@@ -34,12 +34,13 @@ int display_array[8][8] = {
   };
 
 // Instantiate Matrix Display array
-int rowPinArray[8] = {2, 3, 4, 5, 6, 7, 8, 9};
+uint8_t rowPinArray[8] = {2, 3, 4, 5, 6, 7, 8, 9};
 MatrixDisplay matrixDisp(rowPinArray, 10);
 
 void setup() {
   // Copy in inital S array
   matrixDisp.updateDisplayArray(display_array);
+  //delay(2000);
 }
 
 void loop() {

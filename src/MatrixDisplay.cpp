@@ -2,12 +2,12 @@
 #include <classMatrixDisplay.h>
 #include <structSnakeNode.h>
 
-MatrixDisplay::MatrixDisplay(int row_pins[8], int latchPin){
+MatrixDisplay::MatrixDisplay(uint8_t row_pins[8], uint8_t latchPin){
     // latch pin for shift register
     _latch_pin = latchPin;
     pinMode(latchPin, OUTPUT);
     // set row pins as outputs
-    for(int i = 0; i < 8; i++){
+    for(uint8_t i = 0; i < 8; i++){
         _row_pins[i] = row_pins[i];
         pinMode(_row_pins[i], OUTPUT);
         // Set all LEDs off intially starting with setting row pins low
@@ -24,10 +24,10 @@ MatrixDisplay::MatrixDisplay(int row_pins[8], int latchPin){
     digitalWrite(latchPin, HIGH);
 }
 
-void MatrixDisplay::updateDisplayArray(int displayArray[8][8]){
+void MatrixDisplay::updateDisplayArray(uint8_t displayArray[8][8]){
     // Copies array into MatrixDisplay class
-    for(int i = 0; i < 8; i++){
-        for(int j = 0; j < 8; j++){
+    for(uint8_t i = 0; i < 8; i++){
+        for(uint8_t j = 0; j < 8; j++){
             _display_array[i][j] = displayArray[i][j];
         }
     }
@@ -36,7 +36,7 @@ void MatrixDisplay::updateDisplayArray(int displayArray[8][8]){
 void MatrixDisplay::refreshDisplay(){
     // Refreshes the display
     // Loop through 2D display array updating hardware LED matrix
-    for(int j = 0; j < 8; j++){
+    for(uint8_t j = 0; j < 8; j++){
         // Set current column being refreshed LOW and rest HIGH
         byte bits_to_send = 0xff;
         bitWrite(bits_to_send, j, LOW);
@@ -47,7 +47,7 @@ void MatrixDisplay::refreshDisplay(){
         digitalWrite(_latch_pin, HIGH);
 
         // Reflect display array by setting LEDs in that column active HIGH 
-        for(int i = 0; i < 8; i++){
+        for(uint8_t i = 0; i < 8; i++){
             if(_display_array[i][j]){
                 digitalWrite(_row_pins[i], HIGH);
             }
@@ -56,7 +56,7 @@ void MatrixDisplay::refreshDisplay(){
         delayMicroseconds(2000);
 
         // Turn all pins that were active HIGH, LOW
-        for(int i = 0; i < 8; i++){
+        for(uint8_t i = 0; i < 8; i++){
             if(_display_array[i][j]){
                 digitalWrite(_row_pins[i], LOW);
             }
