@@ -12,6 +12,7 @@ class Snake
         void changeDirection();
         void updateDisplay();
         void enqueueFood(uint8_t x, uint8_t y);
+        void dequeueFood();
         SnakeNode *tail;
         SnakeNode *food;
         uint8_t length;
@@ -19,7 +20,6 @@ class Snake
         SnakeNode* createNode(uint8_t node_type, uint8_t x, uint8_t y, uint8_t direction);
         void insertBend(uint8_t x, uint8_t y, uint8_t direction);
         void removeNode();
-        void dequeueFood();
 };
 
 #endif
