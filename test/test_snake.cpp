@@ -13,13 +13,25 @@ void tearDown(void){
 
 void test_snake_constructor(){
     Snake testSnake;
-    //uint8_t x1 = 1, x2 = 2, y1 = 1, y2 = 2;
-    //TEST_ASSERT_NULL(testSnake.food->next);
-    testSnake.enqueueFood(2, 2);
-    TEST_ASSERT_EQUAL_UINT8(2, (testSnake.food->x));
-    /*TEST_ASSERT_EQUAL(0, testSnake.food->y);
-    TEST_ASSERT_EQUAL(5, testSnake.food->direction);
-    TEST_ASSERT_EQUAL(0, testSnake.food->node_type);*/
+    // Test food is null
+    TEST_ASSERT_NULL(testSnake.food_queue);
+    TEST_ASSERT_NULL(testSnake.latest_bend)
+    // Testing tail construction
+    TEST_ASSERT_EQUAL_UINT8(0, testSnake.tail->node_type);
+    TEST_ASSERT_EQUAL_UINT8(4, testSnake.tail->x);
+    TEST_ASSERT_EQUAL_UINT8(6, testSnake.tail->y);
+    TEST_ASSERT_EQUAL_UINT8(0, testSnake.tail->direction);
+    // Test head construction
+    TEST_ASSERT_EQUAL_UINT8(1, testSnake.head->node_type);
+    TEST_ASSERT_EQUAL_UINT8(4, testSnake.head->x);
+    TEST_ASSERT_EQUAL_UINT8(4, testSnake.head->y);
+    TEST_ASSERT_EQUAL_UINT8(0, testSnake.head->direction);
+    // Confirm head linkage
+    SnakeNode *head = testSnake.tail->next;
+    TEST_ASSERT_EQUAL_UINT8(1, head->node_type);
+    TEST_ASSERT_EQUAL_UINT8(4, head->x);
+    TEST_ASSERT_EQUAL_UINT8(4, head->y);
+    TEST_ASSERT_EQUAL_UINT8(0, head->direction);    
 }
 
 void test_enqueue_dequeque(){

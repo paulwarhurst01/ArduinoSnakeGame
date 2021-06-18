@@ -9,6 +9,7 @@ Snake::Snake()
     SnakeNode *tail = new SnakeNode(0, 4, 6, 0);
     // Link snake node to tail
     this->tail = tail;
+    this->latest_bend = NULL;
     // Create the head
     SnakeNode *head = new SnakeNode(1, 4, 4, 0);
     head->next = NULL;
@@ -16,36 +17,61 @@ Snake::Snake()
     // Link the head as the next member to tail, bends will be inserted between the two
     // This allows one linked list to be sent to display
     tail->next = head;
+    // Initialise food_queue to NULL
+    this->food_queue = NULL;
 }
 
-/*void Snake::insertBend(uint8_t x, uint8_t y, uint8_t direction){
-    // Preserve address of head
-    SnakeNode *head = tail->next;
-    // Add bend
-    tail->next = createNode(2, x, y, direction);
-    // Link bend to head
-    tail->next->next = head;
+void Snake::changeDirection(uint8_t direction){
+    if(this->head->direction != direction){
+        this->head->direction = direction;
+        this->enqueueBend();
+    }
 }
 
-void Snake::enqueueFood(uint8_t x, uint8_t y)
+void Snake::enqueueBend()
+{   
+    // Adds coordinates of head turn as a bend snake node
+    SnakeNode *bend = new SnakeNode(2, this->head->x, this->head->y, this->head->direction);
+    bend->next = this->head;
+    if(this->latest_bend == NULL) this->tail->next = bend;
+    this->latest_bend = bend;
+    // Find end of linked list from tail
+    SnakeNode *temp = tail->next;
+    while(temp->next != NULL){
+        temp = temp->next;
+    }
+    temp->next = bend;
+}
+
+void Snake::dequeueBend(){
+    // Remove bend as tail crosses it
+    // Delete bend, ensuring it is a bend and not head is not deleted
+    if(this->tail->next->next != NULL){
+        SnakeNode *temp = this->tail->next->next;
+        delete(this->tail->next);
+        this->tail->next = temp;
+    }
+    // Prevents losing head from accidental call
+}
+
+void Snake::enqueueFood()
 {
-    if(food == NULL){
+    SnakeNode *food = new SnakeNode(3, this->head->x, this->head->y, 0);
+
+    if(food_queue == NULL){
         // If no food items exist, create one
-        food = createNode(5, x, y, 5);
+        food->next = NULL;
+        this->food_queue = food;
     }
     else{
-        // Find end of queue to add new food item to end of queue
-        SnakeNode* temp = food->next;
-        while(temp != NULL){
-            temp = temp->next;
-        }
-        temp->next = createNode(5, x, y, 5);
+        food = this->food_queue->next
+        food->next = this->food_queue->next;
+        this->food_queue->next = food;
     }
 }
 
 void Snake::dequeueFood(){
-    // Preserve next in queue before calling free()
-    SnakeNode* temp = food->next;
-    food = temp;
-    free(temp);
-}*/
+    SnakeNode *temp = this->food_queue->next->next;
+    delete(this->food_queue->next);
+    this->food_queue->next = temp;
+}
