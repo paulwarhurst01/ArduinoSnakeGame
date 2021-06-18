@@ -11,7 +11,7 @@ Snake::Snake()
     this->tail = tail;
     this->latest_bend = NULL;
     // Create the head
-    SnakeNode *head = new SnakeNode(1, 4, 4, 0);
+    SnakeNode *head = new SnakeNode(1, 4, 4, 1);
     head->next = NULL;
     this->head = head;
     // Link the head as the next member to tail, bends will be inserted between the two
@@ -35,12 +35,6 @@ void Snake::enqueueBend()
     bend->next = this->head;
     if(this->latest_bend == NULL) this->tail->next = bend;
     this->latest_bend = bend;
-    // Find end of linked list from tail
-    SnakeNode *temp = tail->next;
-    while(temp->next != NULL){
-        temp = temp->next;
-    }
-    temp->next = bend;
 }
 
 void Snake::dequeueBend(){
@@ -64,7 +58,7 @@ void Snake::enqueueFood()
         this->food_queue = food;
     }
     else{
-        food = this->food_queue->next
+        food = this->food_queue->next;
         food->next = this->food_queue->next;
         this->food_queue->next = food;
     }

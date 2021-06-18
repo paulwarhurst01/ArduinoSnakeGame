@@ -10,7 +10,8 @@ class Snake
         Snake();
         void moveSnake();
         void changeDirection(uint8_t direction);
-        void enqueueFood(uint8_t x, uint8_t y);
+        void enqueueFood();
+        
         SnakeNode *tail;                // tail of the snake
         SnakeNode *latest_bend;         // Prevents traversing the whole linked list each time
         SnakeNode *head;                // Head of the snake
