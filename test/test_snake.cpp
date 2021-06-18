@@ -2,7 +2,7 @@
 #include <unity.h>
 
 #include "classSnake.h"
-#include "structSnakeNode.h"
+#include "classSnakeNode.h"
 
 void setUp(void){
 }

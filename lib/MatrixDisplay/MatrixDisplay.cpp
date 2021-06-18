@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#include "structSnakeNode.h"
+#include "classSnakeNode.h"
 #include "classMatrixDisplay.h"
 
 MatrixDisplay::MatrixDisplay(uint8_t row_pins[8], uint8_t latchPin){
@@ -65,10 +65,10 @@ void MatrixDisplay::refreshDisplay(){
     }
 }
 
-void MatrixDisplay::updateDisplayList(SnakeNode* tail){
+/*void MatrixDisplay::updateDisplayList(SnakeNode* tail){
     SnakeNode *temp = tail->next;
     do
     {
         
     } while (temp->next != NULL);
-}
+}*/

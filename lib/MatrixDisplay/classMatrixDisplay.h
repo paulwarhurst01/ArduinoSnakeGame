@@ -11,14 +11,14 @@
 #include <Arduino.h>
 #include <SPI.h>
 
-#include "structSnakeNode.h"
+#include "classSnakeNode.h"
 
 class MatrixDisplay
 {
     public:
         MatrixDisplay(uint8_t row_pins[8], uint8_t latchPin);       // Class constructor
         void updateDisplayArray(uint8_t displayArray[8][8]);    // Updates array by copying in another complete array
-        void updateDisplayList(SnakeNode *tail);            // Updates array using a list passed
+        //void updateDisplayList(SnakeNode *tail);            // Updates array using a list passed
         void refreshDisplay();                              // Refreshs display column by column
     private:
         uint8_t _latch_pin;                                     // Latch pin for shift reg
