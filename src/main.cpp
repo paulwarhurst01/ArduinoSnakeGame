@@ -1,7 +1,7 @@
-#include <Arduino.h>
+//#include <Arduino.h>
 #include "classMatrixDisplay.h"
 #include "classSnake.h"
-#include "classSnakeNode.h"
+//#include "classSnakeNode.h"
 
 uint8_t display_array[8][8] = {
     // Initial S display array

@@ -54,6 +54,5 @@ int main(int argc, char **argv)
     RUN_TEST(test_snake_constructor);
     RUN_TEST(test_enqueue_dequeque);
     UNITY_END();
-
     return 0;
 }

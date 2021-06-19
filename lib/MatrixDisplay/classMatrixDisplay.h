@@ -17,13 +17,13 @@ class MatrixDisplay
 {
     public:
         MatrixDisplay(uint8_t row_pins[8], uint8_t latchPin);       // Class constructor
-        void updateDisplayArray(uint8_t displayArray[8][8]);    // Updates array by copying in another complete array
-        //void updateDisplayList(SnakeNode *tail);            // Updates array using a list passed
-        void refreshDisplay();                              // Refreshs display column by column
+        void updateDisplayArray(uint8_t displayArray[8][8]);        // Updates array by copying in another complete array
+        void updateDisplayList(SnakeNode *tail);                  // Updates array using a list passed
+        void refreshDisplay();                                      // Refreshs display column by column
     private:
-        uint8_t _latch_pin;                                     // Latch pin for shift reg
-        uint8_t _row_pins[8];                                   // 8 pins for rows
-        uint8_t _display_array[8][8];                           // internal display array that represents LED matrix
+        uint8_t _latch_pin;                                         // Latch pin for shift reg
+        uint8_t _row_pins[8];                                       // 8 pins for rows
+        uint8_t _display_array[8][8];                               // internal display array that represents LED matrix
 };
 
 #endif

@@ -6,17 +6,17 @@
 
 class Snake
 {
-    public:
-        Snake();
-        void moveSnake();
-        void changeDirection(uint8_t direction);
-        void enqueueFood();
-        
+    public:        
         SnakeNode *tail;                // tail of the snake
         SnakeNode *latest_bend;         // Prevents traversing the whole linked list each time
         SnakeNode *head;                // Head of the snake
         SnakeNode *food_queue;          // Food the snake has eaten    
         uint8_t length;
+
+        Snake();
+        void moveSnake();
+        void changeDirection(uint8_t direction);
+        void enqueueFood();
     private:
         void enqueueBend();
         void dequeueBend();
