@@ -23,7 +23,9 @@ Snake::Snake()
 
 void Snake::changeDirection(uint8_t direction){
     if(this->head->direction != direction){
+        // Update head direction
         this->head->direction = direction;
+        // Enqueue a bend at location
         this->enqueueBend();
     }
 }
@@ -50,6 +52,7 @@ void Snake::dequeueBend(){
 
 void Snake::enqueueFood()
 {
+    // Add food to queue
     SnakeNode *food = new SnakeNode(3, this->head->x, this->head->y, 0);
 
     if(food_queue == NULL){

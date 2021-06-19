@@ -1,5 +1,4 @@
 # Development Notes
-
 - These rough notes document the design process and implementation of the game providing reasoning for design decisions made throughout the design process.
 - The reasoning for many of the design decisions 
 - Most recent additions are at the top with older development toward the bottom
@@ -64,7 +63,7 @@ N.B. The system would benefit from a second shift register cutting down on pins
 - Shift reg Max clock speed - 25 MHz - Use 20 MHz for Arduino
 - Using default SPI mode
 
-## Solution - Obviously
+## Solution
 - Turn on everything in column - i.e. refresh column by column rather than LED by LED
     - Implementation greatly increased the refresh rate.
     - Final Implementation used.

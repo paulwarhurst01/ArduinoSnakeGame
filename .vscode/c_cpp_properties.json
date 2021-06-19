@@ -10,7 +10,10 @@
             "includePath": [
                 "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/include",
                 "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/src",
+                "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/lib/Snake",
+                "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/lib/MatrixDisplay",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/lib/SnakeNode",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs",
                 "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
@@ -25,7 +28,10 @@
                 "path": [
                     "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/include",
                     "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/src",
+                    "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/lib/Snake",
+                    "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/lib/MatrixDisplay",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "C:/Users/warhu/Documents/PlatformIO/Projects/ArduinoSnakeGame/lib/SnakeNode",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/variants/eightanaloginputs",
                     "C:/Users/warhu/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
