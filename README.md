@@ -1,6 +1,7 @@
 # ArduinoSnakeGame - Under Development
 A basic Arduino Snake game using an 8x8 LED Matrix display and a single shift register.
-This build operates on an atmega328 with "new bootloader"
+This build operates on an atmega328 with "new bootloader".
+Developed in PlatformIO
 
 ## Snake Game operation
 
