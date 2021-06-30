@@ -16,7 +16,9 @@ class Game
         MatrixDisplay matrixDisp(uint8_t rowPinArray, uint8_t latch_pin);
 
         Game();
-        void newFood();
+        void newFood();         
+        void moveSnake();           
+        void checkDirection();  // Checks pins and sets new direction if necessary
 };
 
 #endif
