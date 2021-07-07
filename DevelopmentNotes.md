@@ -4,8 +4,10 @@
 - Most recent additions are at the top with older development toward the bottom
 
 ## Still ToDo
-- Test cases for queues
-- Complete
+- Three parallel processes on Snake
+    - Poll buttons and change direction accordingly
+    - Update display
+    - Refresh display
 
 # Snake Game Design and Implementaion
 ### Initial
