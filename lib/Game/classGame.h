@@ -1,5 +1,5 @@
 #ifndef Snake_h
-#define SNake_h
+#define Snake_h
 
 #include <Arduino.h>
 

@@ -18,6 +18,7 @@ class MatrixDisplay
     public:
         MatrixDisplay(uint8_t row_pins[8], uint8_t latchPin);       // Class constructor
         void updateDisplayArray(uint8_t displayArray[8][8]);        // Updates array by copying in another complete array
+        void setPixel(uint8_t x, uint8_t y, uint8_t val);           // Set individual Pixel in display array
         void updateDisplayList(SnakeNode *tail);                  // Updates array using a list passed
         void refreshDisplay();                                      // Refreshs display column by column
     private:

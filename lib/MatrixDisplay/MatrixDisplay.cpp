@@ -3,7 +3,8 @@
 #include "classSnakeNode.h"
 #include "classMatrixDisplay.h"
 
-MatrixDisplay::MatrixDisplay(uint8_t row_pins[8], uint8_t latchPin){
+MatrixDisplay::MatrixDisplay(uint8_t row_pins[8], uint8_t latchPin)
+{
     // latch pin for shift register
     _latch_pin = latchPin;
     pinMode(latchPin, OUTPUT);
@@ -25,7 +26,8 @@ MatrixDisplay::MatrixDisplay(uint8_t row_pins[8], uint8_t latchPin){
     digitalWrite(latchPin, HIGH);
 }
 
-void MatrixDisplay::updateDisplayArray(uint8_t displayArray[8][8]){
+void MatrixDisplay::updateDisplayArray(uint8_t displayArray[8][8])
+{
     // Copies array into MatrixDisplay class
     for(uint8_t i = 0; i < 8; i++){
         for(uint8_t j = 0; j < 8; j++){
@@ -34,7 +36,8 @@ void MatrixDisplay::updateDisplayArray(uint8_t displayArray[8][8]){
     }
 }
 
-void MatrixDisplay::refreshDisplay(){
+void MatrixDisplay::refreshDisplay()
+{
     // Refreshes the display
     // Loop through 2D display array updating hardware LED matrix
     for(uint8_t j = 0; j < 8; j++){
@@ -63,6 +66,11 @@ void MatrixDisplay::refreshDisplay(){
             }
         }
     }
+}
+
+void MatrixDisplay::setPixel(uint8_t x, uint8_t y, uint8_t val)
+{
+    this->_display_array[x][y] = val;
 }
 
 /*void MatrixDisplay::updateDisplayList(SnakeNode* tail){
