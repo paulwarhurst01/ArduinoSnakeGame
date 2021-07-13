@@ -21,7 +21,7 @@ Snake::Snake()
 }
 
 void Snake::move(uint8_t skip_tail_inc){
-    // Returns value of previous 
+    // Increment head
     this->head->increment();
     // If tail meets food, tail remains static
     if(!skip_tail_inc){

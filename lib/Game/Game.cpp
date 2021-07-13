@@ -21,8 +21,8 @@ Game::Game(uint8_t rowPinArray[8], uint8_t latchPin,
         pinMode(_direction_pins[i], INPUT_PULLUP);
     }
 
-    this->loadIntroScreen();
     this->matrixDisp = new MatrixDisplay(rowPinArray, latchPin);
+    this->loadIntroScreen();
 
     this->skipTailInc = 0;
 }
@@ -47,6 +47,11 @@ void Game::loadIntroScreen()
 
 void Game::newFood(){
     this->food->newLocation();
+    do
+    {
+        this->food->newLocation();
+    } while (this->matrixDisp->getPixelValue(this->food->x, this->food->y));
+    
     // Check food isn't colliding with snake
 }
 
@@ -74,6 +79,17 @@ void Game::moveSnake(){
         this->matrixDisp->setPixel(temp_x, temp_y, 0);
     }
     this->matrixDisp->setPixel(this->snake->head->x, this->snake->head->y, 1);
+    
+    // Check to see if Snake just ate
+    if(this->snake->head->x == this->food->x
+        && this->snake->head->y == this->food->y){
+            // If just ate, enqueue food
+            this->snake->enqueueFood();
+            // Generate new food
+            this->food->newLocation();
+            // Set new food pixel high on display
+            this->matrixDisp->setPixel(this->food->x, this->food->y, 1);
+    }
 }
 
 void Game::checkDirection(){

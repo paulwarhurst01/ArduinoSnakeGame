@@ -73,6 +73,10 @@ void MatrixDisplay::setPixel(uint8_t x, uint8_t y, uint8_t val)
     this->_display_array[x][y] = val;
 }
 
+uint8_t MatrixDisplay::getPixelValue(uint8_t x, uint8_t y){
+    return this->_display_array[x][y];
+}
+
 /*void MatrixDisplay::updateDisplayList(SnakeNode* tail){
     SnakeNode *temp = tail->next;
     do
