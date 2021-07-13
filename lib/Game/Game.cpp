@@ -51,9 +51,10 @@ void Game::newFood(){
 }
 
 void Game::moveSnake(){
+    // Store location of tail location before incrementing
+    // This is necessary to turn off the previous tail pixel moving the snake
     uint8_t temp_x = this->snake->tail->x; 
     uint8_t temp_y = this->snake->tail->y;
-    // Turn off the tail pixel if tail != food
 
     // If tail == food last move, skip tail increment this move
     if(this->skipTailInc){
