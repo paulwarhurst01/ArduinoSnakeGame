@@ -18,7 +18,8 @@ class SnakeNode
         uint8_t direction;      // 1 - Up, 2 - Left, 3 - Down, 4 - Right, 0 - food
         SnakeNode *next;        // Pointer to the next node in the list
 
-        // Functions        
+        // Functions
+        void increment();        
 };
 
 #endif

@@ -14,7 +14,7 @@ class Snake
         uint8_t length;
 
         Snake();
-        void moveSnake();
+        void move(uint8_t skip_tail_inc);
         void changeDirection(uint8_t direction);
         void enqueueFood();
     private:

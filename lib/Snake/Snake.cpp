@@ -1,5 +1,4 @@
 #include <Arduino.h>
-
 #include "classSnake.h"
 #include "classSnakeNode.h"
 
@@ -19,6 +18,28 @@ Snake::Snake()
     tail->next = head;
     // Initialise food_queue to NULL
     this->food_queue = NULL;
+}
+
+void Snake::move(uint8_t skip_tail_inc){
+    // Returns value of previous 
+    this->head->increment();
+    // If tail meets food, tail remains static
+    if(!skip_tail_inc){
+        this->tail->increment();
+        // If tail now equals bend, delete the bend by dequeing
+        if(this->tail->x == this->tail->next->x && 
+            this->tail->y == this->tail->next->y)
+            {
+            // Direction of tail becomes direction of bend
+            this->tail->direction = this->tail->next->direction;
+            this->dequeueBend();
+        }
+    }
+    else{
+        // If not incrementing this move due to food, dequeue food
+        this->dequeueFood();
+        this->length++;
+    }
 }
 
 void Snake::changeDirection(uint8_t direction){
